@@ -5,6 +5,9 @@ from .models import Flat
 from ..users.serializers import UserSerializer
 
 class FlatSerializer(serializers.ModelSerializer):
+    members = UserSerializer(read_only=True, many=True)
+    admins = UserSerializer(read_only=True, many=True)
+
     class Meta:
         model = Flat
         fields = ['id' ,'name', 'members', 'admins']
