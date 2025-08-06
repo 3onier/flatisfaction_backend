@@ -10,7 +10,7 @@ class FlatSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Flat
-        fields = ['id' ,'name', 'members', 'admins']
+        fields = ['id' ,'name', 'members', 'admins', 'can_member_edit_chores']
         read_only_fields = ['members', 'admins']
     
     # TODO make sure admin is also member otherwise don't let it work when saving maybe validate allows it or save()

@@ -5,6 +5,7 @@ from .users.views import UserProfileDetail, UserDetail, ChangePasswordView
 
 from .flat.views import FlatView, FlatsView, FlatMembersView, FlatMemberView ,FlatAdminsView, FlatAdminView, MakeAdminView, LeaveFlat
 from .invite.views import OpenInviteView, ListAndCreateInviteView, PublicInviteView, RetrieveDestroyInvite
+from .chore.views import ListAllUserChores, RetrieveUpdateDestroyChore, ListCreateFlatChores, ListChoreAppointments, ScheduleCreateDeleteView, RetrieveUpdateDestroyChoreAppointment
 
 urlpatterns = [
     path(r'auth/', include('knox.urls')),
@@ -25,4 +26,11 @@ urlpatterns = [
     path(r'flats/<int:flat_id>/invites/<str:invite_code>', RetrieveDestroyInvite.as_view()),
     path(r'invite/<str:invite_code>/open', OpenInviteView.as_view()),
     path(r'invite/<str:invite_code>/', PublicInviteView.as_view()),
+
+    path(r'flats/<int:flat_id>/chores/', ListCreateFlatChores.as_view()),
+    path(r'flats/<int:flat_id>/schedule/', ListChoreAppointments.as_view()),
+    path(r'flats/<int:flat_id>/schedule/edit/', ScheduleCreateDeleteView.as_view()),
+    path(r'chores/', ListAllUserChores.as_view()),
+    path(r'chores/<int:pk>', RetrieveUpdateDestroyChore.as_view()),
+    path(r'schedule/<int:pk>', RetrieveUpdateDestroyChoreAppointment.as_view()),
 ]
